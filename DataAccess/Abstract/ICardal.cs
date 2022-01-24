@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface ICardal
+    public interface ICardal:IEntityRepository<Car> 
     {// GetById, GetAll, Add, Update, Delete oprasyonlarını yazmalıyız ki inmemorye miras olarak verebilelim
         //ilerde entitity repositoryden alacağız muhtemelen
 
