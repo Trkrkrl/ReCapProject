@@ -1,5 +1,4 @@
 ﻿using Core.Entities;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Color:IEntity
+    public class Model:IEntity
     {
-        public int ColorId { get; set; }
-        public string ColorName { get; set; }
+        public int Id { get; set; }
+        public string ModelName { get; set; }
     }
 }

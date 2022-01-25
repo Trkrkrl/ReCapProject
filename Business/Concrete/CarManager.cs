@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace Business.Concrete
     public class CarManager:ICarService
     {// program cs diyor ki burada ctor yok- ekledik Icardal_cardal ile
 
-        ICardal _cardal; // bunu ctor ladık
+        ICarDal _cardal; // bunu ctor ladık
 
-        public CarManager(ICardal cardal)
+        public CarManager(ICarDal cardal)
         {
             _cardal = cardal;
         }
@@ -51,20 +52,29 @@ namespace Business.Concrete
         //aşağıdakileri IcarService ten implementasyon ile getirdik
         public List<Car> GetAll()
         {
-            throw new NotImplementedException();
+            return _cardal.GetAll();
         }
 
         
 
-        public List<Car> GetCarsByBrandId(int id)
+        public List<Car> GetAllByBrandId(int id)
         {
-            return _cardal.GetAll(c => c.BrandId == id);
+            return _cardal.GetAll(c => c.Id == id);
         }
 
-        public List<Car> GetCarsByColorId(int id)
+       
+        
+
+       
+
+        public List<Car> GetAllByColorId(int id)
         {
             return _cardal.GetAll(c => c.ColorId == id);
+        }
 
+        public List<CarDetailDto> GetCarDetails()//bunun çalışması için ICardal a 
+        {
+            return _cardal.GetCarDetails();
         }
     }
 }
