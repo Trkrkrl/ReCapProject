@@ -59,7 +59,7 @@ namespace Business.Concrete
 
         public List<Car> GetAllByBrandId(int id)
         {
-            return _cardal.GetAll(c => c.Id == id);
+            return _cardal.GetAll(c => c.CarId == id);
         }
 
        
