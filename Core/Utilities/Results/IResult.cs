@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Results
 {
-    public interface IResult
-    {
+    public interface IResult//Result ve IDataResultta kullanılacak
+    {//Temel voidleimiz için başlangıç,  service koldarında voidler IResult ile değişecek
+        bool Success { get; }
+        string Message { get; }
     }
 }
