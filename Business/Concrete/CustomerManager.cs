@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,29 +14,42 @@ namespace Business.Concrete
     public class CustomerManager : ICustomerService
 
     {
+        ICustomerDal _customerDal;
+
+        public CustomerManager(ICustomerDal customerDal)
+        {
+            _customerDal = customerDal;
+        }
+
+
+
+        //------------------------------------------//not: messages i güncellemeyi unutma ki aşapıda mesaj verecez
         public IResult Add(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Add(customer);
+            return new SuccessDataResult<Customer>(Messages.CustomerAdded);
         }
 
         public IResult Delete(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Delete(customer);
+            return new Result(true, Messages.CustomerDeleted);  
         }
 
         public IDataResult<List<Customer>> GetAll()
         {
-            throw new NotImplementedException();
+            return new DataResult<List<Customer>>(_customerDal.GetAll(), true, Messages.CustomerListed);
         }
 
         public IDataResult<Customer> GetById(int customerId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Customer>(_customerDal.Get(C=> C.UserId == customerId));
         }
 
         public IResult Update(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Update(customer);//I resultta result oluyor-update de mesaj veya eri gelimyo sadece bool
+            return new Result(true);
         }
     }
 }

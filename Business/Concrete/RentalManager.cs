@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,29 +13,47 @@ namespace Business.Concrete
 {
     public class RentalManager : IRentalService
     {
+        IRentalDal _rentalDal;
+
+        public RentalManager(IRentalDal rentalDal)
+        {
+            _rentalDal = rentalDal;
+        }
+
+        //-----------------------------------
         public IResult Add(Rental rental)
         {
-            throw new NotImplementedException();
+            if (rental.ReturnDate.Year == 2022)
+            {
+                _rentalDal.Add(rental);
+                return new SuccessDataResult<Rental>(Messages.RentalAdded);
+            }
+            else
+                return new ErrorDataResult<Rental>(Messages.RentalFailed);
         }
 
         public IResult Delete(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Delete(rental);
+             return new SuccessDataResult<Rental>(Messages.RentalDeleted);
+           // return new Result(true, Messages.RentalDeleted);
         }
 
-        public IDataResult<List<Rental>> GetAll()
+        public IDataResult<List<Rental>> GetAll()//buradadata result list t verilmiş aşağısı da öyle oalcak
         {
-            throw new NotImplementedException();
+            
+            return new DataResult<List<Rental>>  (_rentalDal.GetAll(),true, Messages.RentalListed);//data bool ve mesaj istiyor
         }
 
         public IDataResult<Rental> GetById(int rentalId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id==rentalId));
         }
 
         public IResult Update(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Update(rental);
+            return new Result(true);
         }
     }
 }

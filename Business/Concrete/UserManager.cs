@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,30 +12,42 @@ using System.Threading.Tasks;
 namespace Business.Concrete
 {
     public class UserManager : IUserService
-    {
+        
+    {// ctro ile _dallı yapımızı unutmayalım-bunun için gerekli dal interfaceini da yapmayı unutmayalım-konum:dataaccesss.abstract
+        IUserDal _userDal;
+
+        public UserManager(IUserDal userDal)
+        {
+            _userDal = userDal;
+        }
+        //-------------------------------------
+
         public IResult Add(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Add(user);
+            return new SuccessDataResult<User>(Messages.UserAdded);
         }
 
         public IResult Delete(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Delete(user);
+            return new Result(true, Messages.UserDeleted);    
         }
 
         public IDataResult<List<User>> GetAll()
         {
-            throw new NotImplementedException();
+            return new DataResult<List<User>>(_userDal.GetAll(), true, Messages.UserListed);
         }
 
         public IDataResult<User> GetById(int userId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == userId));
         }
 
         public IResult Update(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Update(user);
+            return new Result(true);
         }
     }
 }

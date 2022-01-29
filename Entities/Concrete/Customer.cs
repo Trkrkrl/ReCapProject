@@ -9,12 +9,8 @@ namespace Entities.Concrete
 {
     public class Customer:IEntity
     {
-        public int CarId { get; set; }
-        public int BranId { get; set; }
-        public int ColorId { get; set; }
-        public string ModelYear { get; set; }
-        public decimal DailyPrice { get; set; }
-        public string Descriptions { get; set; }
+        public int UserId { get; set; }
+        public string CompanyName { get; set; }
 
 
 
