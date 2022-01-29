@@ -19,7 +19,27 @@ namespace ConsoleUI
 
             //!!!!!!!!!!!!!!!! dikkat sql tablolarında 1 er tane renk , brand ve araba ekle sırassyıla , veri yoksa veri göstermezz
 
-            CarTest2();
+            // CarTest2();
+            //10. gün 4. ödev kapsamında rental testi yapıalcaktır
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            customerManager.Add(new Customer
+            {
+                CompanyName = "North Star Inc."
+            });
+
+
+            UserManager userManager = new UserManager(new EfUserDal());
+            userManager.Add(new User
+            {
+                Email = "asd@asd.com",
+                FirstName = "TESTKULLANICIADI",
+                LastName = "TESTSOYAD",
+                Password = "1234",
+                CustomerId=1//bu değer mevcut müşterilerden birinin idsi
+                
+
+            });
         }
 
         private static void CarTest2()
