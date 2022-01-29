@@ -29,7 +29,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Color> Colors { get; set; }
         // ilerde customer user ve rental  da gelecek
 
-        public DbSet<Order> Orders { get; set; }
+      
         public DbSet<Model> Models { get; set; }
     }
 }

@@ -21,10 +21,10 @@ namespace Business.Abstract
         
         IDataResult<List<CarDetailDto>> GetCarDetails();//
         IDataResult<Car> GetById(int carId);
-        void Add(Car car);
-        void Update(Car car);
+        IResult Add(Car car);
+        IResult Update(Car car);
 
-        void Delete(Car car);
+        IResult Delete(Car car);
 
     }
 }

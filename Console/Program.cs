@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
+using Entities.Concrete;
 using System;
 
 namespace ConsoleUI
@@ -14,12 +15,52 @@ namespace ConsoleUI
             //brandtest
             //colortest
             //ColorTest();   testler daha sonra tekrar bak branddal vs kırmızı yanıydu
+            //car test 2. olarak 1 tane daha yaptım
+
+            //!!!!!!!!!!!!!!!! dikkat sql tablolarında 1 er tane renk , brand ve araba ekle sırassyıla , veri yoksa veri göstermez
+
+            CarTest2();
+        }
+
+        private static void CarTest2()
+        {
+            Car MyCar = new Car
+            {
+                BrandId = 4,
+                ColorId = 3,
+                ModelYear = "2016",
+                DailyPrice = 498000,
+                Descriptions = "Volvo XC40"
+            };
+
+            CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetCarDetails();
+
+            if (result.Success)
+            {
+                foreach (var item in result.Data)
+                {
+                    Console.WriteLine(
+                               "Car's Description: " + item.CarName + " \n" +
+                               "Car's Brand Name: " + item.BrandName + " \n" +
+                               "Car's Color: " + item.ColorName + " \n" +
+                               "Car's Daily Price: " + item.DailyPrice + " \n" +
+                             
+                               "******************************************"
+                        );
+                }
+
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
 
         private static void ColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
 
                 Console.WriteLine(color.ColorName);
@@ -30,27 +71,18 @@ namespace ConsoleUI
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
 
                 Console.WriteLine(brand.BrandName);
             }
         }
+        
+
+
     }
 
-        private static void CarTest()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());//Ef cardalımız yok-nereye kuracaz-in memory dataaccses concrete eydi-bu da data access entititframeworkte olmalı
-            foreach (var item in carManager.GetCarDetails())
-            {
-                Console.WriteLine(
-                             "Car's Description: " + item.CarName + " \n" +
-                             "Car's Brand Name: " + item.BrandName + " \n" +
-                             "Car's Color: " + item.ColorName + " \n" +
-                             "Car's Daily Price: " + item.DailyPrice + " \n");
-
-            }
-        }
-    }
+        
+    
 }
         

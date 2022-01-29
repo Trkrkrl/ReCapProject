@@ -12,20 +12,31 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, ReCapContext>, ICarDal //buraya bir context gelmeli:ReCapcontext imizi yaptık DataAccess.Concrete.EntityFramework'te 
     {
+        public List<Car> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetById()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<CarDetailDto> GetCarDetails()
         {//alttaki ksımı kopyaladım
+            //SQL VERİTABANINA DİKKAT ET GEREKLİ TABLOLAR YAPILDI MI
 
             using (ReCapContext context=new ReCapContext())
-            {var result = from c in context.Cars
-                          join b in context.Brands on c.BrandId equals b.Id
-                          join r in context.Colors on c.ColorId equals r.ColorId
+            {var result = from a in context.Cars
+                          join b in context.Brands on a.BrandId equals b.BrandId
+                          join r in context.Colors on a.ColorId equals r.ColorId
                           select new CarDetailDto
                           {
                               // CarName, BrandName, ColorName, DailyPrice
-                              CarName = c.Description,
+                              CarName = a.Descriptions,
                               BrandName = b.BrandName,
                               ColorName = r.ColorName,
-                              DailyPrice = c.DailyPrice
+                              DailyPrice = a.DailyPrice
                           };
 
 

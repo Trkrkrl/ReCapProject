@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public class IBrandDal : IEntityRepository<Brand>
+    public interface IBrandDal : IEntityRepository<Brand>//burayı yanlışlıkla class yapmıştık değiştirdik düzeldi
     {
         
     }

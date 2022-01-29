@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOS;
 using System;
@@ -13,68 +16,74 @@ namespace Business.Concrete
     public class CarManager:ICarService
     {// program cs diyor ki burada ctor yok- ekledik Icardal_cardal ile
 
-        ICarDal _cardal; // bunu ctor ladık
+        ICarDal _carDal; // bunu ctor ladık
 
-        public CarManager(ICarDal cardal)
+        public CarManager(ICarDal carDal)
         {
-            _cardal = cardal;
+            _carDal = carDal;
         }
-        //-bunları da implementason ile getirdik
-        public void Add(Car car)//araba ekleme fonk ve kurallarını yazacaz galiba
-        {
-            
-            
-                
-                if (car.Description.Length > 2 && car.DailyPrice > 0)
-                {
-                    _cardal.Add(car);
 
+        public IResult Add(Car car)
+        {
+            if (car.Descriptions.Length >= 2 && car.DailyPrice != 0)
+            {
+                _carDal.Add(car);//magic strings
+                return new SuccessResult(Messages.CarAdded);
+
+            }
+            else
+            {
+                return new ErrorResult(Messages.CarNameInvalid);
+            }
+        }
+
+        public IResult Delete(Car car)
+        {
+                return new Result(true, Messages.CarsDeleted);
+
+        }
+        public IResult Update(Car car)
+        {
+                _carDal.Update(car);
+                return new Result(true);
+        }
+        //--------------------------------------------
+
+        public IDataResult<List<Car>> GetAll()// bakım var emsajı gelecek şekilde yapalım bunu
+        {
+                if (DateTime.Now.Hour == 23)
+                    return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+
+                return new DataResult<List<Car>>(_carDal.GetAll(), true, Messages.CarsListed);
+            }
+
+        public IDataResult<List<Car>> GetAllByBrandId(int id)
+        {
+                return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
+            }
+
+        public IDataResult<List<Car>> GetAllByColorId(int id)
+        {
+                return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));//bu C.ID doğru mu karı
+            }
+
+        public IDataResult<Car> GetById(int carId)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        {
+                if (DateTime.Now.Hour == 10)
+                {
+                    return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
                 }
                 else
                 {
-                    Console.WriteLine("Araba ismi en az 2 karakter olmalıdır ve günlük fiyat 0'dan büyük olmalıdır");
-
+                    return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
                 }
-
-
-        }
-
-        public void Delete(Car car)
-        {
-            _cardal.Delete(car);
-        }
-        public void Update(Car car)
-        {
-            _cardal.Update(car);
-
-        }
-
-        //aşağıdakileri IcarService ten implementasyon ile getirdik
-        public List<Car> GetAll()
-        {
-            return _cardal.GetAll();
         }
 
         
-
-        public List<Car> GetAllByBrandId(int id)
-        {
-            return _cardal.GetAll(c => c.CarId == id);
-        }
-
-       
-        
-
-       
-
-        public List<Car> GetAllByColorId(int id)
-        {
-            return _cardal.GetAll(c => c.ColorId == id);
-        }
-
-        public List<CarDetailDto> GetCarDetails()//bunun çalışması için ICardal a 
-        {
-            return _cardal.GetCarDetails();
-        }
     }
 }

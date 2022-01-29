@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -12,25 +14,49 @@ namespace Business.Concrete
     public class BrandManager : IBrandService
 
     {
-        IBrandDal _brandDal;//bu kısmı yaz ctor yap , diğerleri de implementasyon ile gelecek-bu nu tüm managerlerde yap
-        //veeeeeeeeeeeeeeeeeeeeeeeeeeeeeee unutma  _branddal gibi _ bişey varsa aşağıdaki fonkları return _ bişeyDal. fonk ile doldur mutlaka
-        //p=>p.İd vs li bişeyler de olacak
+        IBrandDal _brandDal;
+
+        //10.gün 4. adım aşamalarında eski kodları sildik ve implementasyon ile , 3. adımda service te güncellenmiş olan kodları çektik
+        //return leri yapalım şimdi
+        //fakat öncesinde Business .Constants.Messages  classımızı yapalım ve içerrisinde mesajları tanımlaralım
+
+
 
         public BrandManager(IBrandDal brandDal)
         {
             _brandDal = brandDal;
         }
-        //--aşağısı imlementasyondan geldi
 
-        public List<Brand> GetAll()
+        public IResult Add(Brand brand)
         {
-            return _brandDal.GetAll();
+            _brandDal.Add(brand);
+            return new SuccessResult(Messages.BrandAdded);
         }
 
-        public Brand GetById(int brandId)
+        public IResult Delete(Brand brand)
         {
-            return _brandDal.Get(b => b.BrandId == brandId);//soldaki var olanlar dan(b den) BrandId sin benim vereceğim ,id(sağdaki)ne eşit olanları getir -- tesadüfen ikisininnde yazımı benzer gelmiş
-
+            _brandDal.Delete(brand);
+            return new Result(true, Messages.BrandDeleted);
         }
+
+       
+
+        public IResult Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+            return new Result(true);
+        }
+        //Ibrand service kırmmızı yandı- getall ı public yap dedi
+        public IDataResult<List<Brand>> GetAll()//data, true false/ message
+        {
+            return new DataResult<List<Brand>>(_brandDal.GetAll(),true,Messages.CarsListed);
+        }
+
+        public IDataResult<Brand> GetById(int brandId)
+        {
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == brandId));
+        }
+
+      
     }
 }
