@@ -17,7 +17,7 @@ namespace ConsoleUI
             //ColorTest();   testler daha sonra tekrar bak branddal vs kırmızı yanıydu
             //car test 2. olarak 1 tane daha yaptım
 
-            //!!!!!!!!!!!!!!!! dikkat sql tablolarında 1 er tane renk , brand ve araba ekle sırassyıla , veri yoksa veri göstermez
+            //!!!!!!!!!!!!!!!! dikkat sql tablolarında 1 er tane renk , brand ve araba ekle sırassyıla , veri yoksa veri göstermezz
 
             CarTest2();
         }
