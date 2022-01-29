@@ -9,29 +9,30 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class RentalManager : IRentalService
+    public class CustomerManager : ICustomerService
+
     {
-        public IResult Add(Rental rental)
+        public IResult Add(Customer customer)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Delete(Rental rental)
+        public IResult Delete(Customer customer)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<Rental>> GetAll()
+        public IDataResult<List<Customer>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<Rental> GetById(int rentalId)
+        public IDataResult<Customer> GetById(int customerId)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Update(Rental rental)
+        public IResult Update(Customer customer)
         {
             throw new NotImplementedException();
         }
