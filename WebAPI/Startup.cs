@@ -1,3 +1,7 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,7 +29,29 @@ namespace WebAPI
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {//buraya services.AddSingleton<I.....Service,.....Manager>();
+            //ve buraya services.AddSingleton<I.....Dal,Ef....Dal>(); kodlari yazacagiz
+            //bunlarin her elemanimiz adina yapacagiz: car user customer brand color rental
+
+            services.AddSingleton<IBrandService, BrandManager>();
+            services.AddSingleton<IBrandDal, EfBrandDal>();
+
+            services.AddSingleton<ICarService, CarManager>();
+            services.AddSingleton<ICarDal, EfCarDal>();
+
+            services.AddSingleton<IColorService, ColorManager>();
+            services.AddSingleton<IColorDal, EfColorDal>();
+
+            services.AddSingleton<ICustomerService, CustomerManager>();
+            services.AddSingleton<ICustomerDal, EfCustomerDal>();
+
+            services.AddSingleton<IRentalService, RentalManager>();
+            services.AddSingleton<IRentalDal, EfRentalDal>();
+
+            services.AddSingleton<IUserService,UserManager>();
+            services.AddSingleton<IUserDal, EfUserDal>();
+
+            //asagidaki svagger hocada yok bende kurulu geldi-postman gibi bir servis 
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
