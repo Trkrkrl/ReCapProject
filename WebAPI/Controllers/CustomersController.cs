@@ -10,41 +10,39 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
-    {
-        //(post)add,update,delete;(get)getall,getby id-- peki getbybrandid ve get cardetails i neden yapmıyoz??
-        ICarService _carService;
+    public class CustomersController : ControllerBase
+    {//(post)add,update,delete;(get)getall,getby id
+        ICustomerService _customerService;
 
-        public CarsController(ICarService carService)
+        public CustomersController(ICustomerService customerService)
         {
-            _carService = carService;
+            _customerService = customerService;
         }
-
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
 
         }
         [HttpGet("GetById")]
-        public IActionResult GetById(int carId)
+        public IActionResult GetById(int customerId)
         {
 
         }
-        //-----------------------------------------------------
         [HttpPost("Add")]
-        public IActionResult Add(Car car)
+        public IActionResult Add(Customer customer)
         {
 
         }
         [HttpPost("Update")]
-        public IActionResult Update(Car car)
+        public IActionResult Update(Customer customer)
         {
 
         }
         [HttpPost("Delete")]
-        public IActionResult Delete(Car car)
+        public IActionResult Delete(Customer customer)
         {
 
         }
+
     }
 }
