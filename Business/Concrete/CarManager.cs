@@ -25,7 +25,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.Descriptions.Length >= 2 && car.DailyPrice != 0)
+            if (car.Description.Length >= 2 && car.DailyPrice != 0)
             {
                 _carDal.Add(car);//magic strings
                 return new SuccessResult(Messages.CarAdded);
@@ -69,7 +69,7 @@ namespace Business.Concrete
 
         public IDataResult<Car> GetById(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarID == carId));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
