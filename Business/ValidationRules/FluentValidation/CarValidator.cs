@@ -8,7 +8,16 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class CarValidator:AbstractValidator<Car>
+    public class CarValidator : AbstractValidator<Car>
     {
+        public CarValidator()
+        {
+            RuleFor(c => c.DailyPrice).GreaterThan(0);
+            RuleFor(c => c.Description.Length).GreaterThan(4);
+            //RuleFor(c => c.BrandId).GreaterThan(0);
+
+
+
+        }
     }
 }
