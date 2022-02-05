@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -24,6 +26,8 @@ namespace Business.Concrete
 
 
         //------------------------------------------//not: messages i güncellemeyi unutma ki aşapıda mesaj verecez
+        [ValidationAspect(typeof(CustomerValidator))]
+
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);
