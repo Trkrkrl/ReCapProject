@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Helpers
 {
-    public class FileHelper
+    public interface IFileHelper
     {
     }
 }
