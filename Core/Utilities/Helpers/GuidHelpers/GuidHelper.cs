@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Utilities.Helpers
+namespace Core.Utilities.Helpers.GuidHelpers
 {
-    public interface IFileHelper
+    public class GuidHelper
     {
+
     }
 }
