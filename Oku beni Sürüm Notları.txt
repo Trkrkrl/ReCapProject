@@ -1,32 +1,95 @@
-13.gün -1.ödev-4. adým notlarý:
+13.gun -1.odev-4. adim notlari:
 
-Entities/Concrete içerisindeki CarImage nesnemizi yaratalým önce, ççünkü birçok yerde kullanýlýyor
-Bunu yaratmadan önce SQL tablomuzu hazýrlayalým (Id,CarId,ImagePath,Date yaptým þimdilik umarý ilerde sorun çýkmaz)-CARS DAKÝ CARID-ÝLE ÝMAGE DEKÝ CARID ARASI baðlantý kur-ben diyagramdan yaptým
-CarImage içerisinde SQL e eþdeðer özelliklerini yazalým.
-CarImage bir IEntity dir yazmayý unutma :
+Entities/Concrete icerisindeki CarImage nesnemizi yaratalim once, ccunku bircok yerde kullaniliyor
+Bunu yaratmadan once SQL tablomuzu hazirlayalim (Id,CarId,ImagePas,Date yaptim simdilik umari ilerde sorun cikmaz)-CARS DAKi CARID-iLE iMAGE DEKi CARID ARASI baglanti kur-ben diyagramdan yaptim
+CarImage icerisinde SQL e esdeger ozelliklerini yazalim.
+CarImage bir IEntity dir yazmayi unutma :
 
 OK
 ---
-FILE HELPER YÜKLEMEK gerekli emin deðilim- file helpers diye yazaný yükledim
+FILE HELPER YuKLEMEK gerekli emin degilim- file helpers diye yazani yukledim
 ---
-Business/abstarct -ýcarimageservice-kodlarýný yazalým- IdataRsult (getall,getbycarid,getbyid) ve IResult(add delete update)-bunlarýn bazý kýsýmlarýnda paramtre içerisine IForm file gerekiyor
-//IFormFile projemize bir dosya yüklemek için kulanýlan yöntemdir, HttpRequest ile gönderilen bir dosyayý temsil eder.
-ctrl + nokta ile asp.netcore.http yi seçve yükle
+Business/abstarct -icarimageservice-kodlarini yazalim- IdataRsult (getall,getbycarid,getbyid) ve IResult(add delete update)-bunlarin bazi kisimlarinda paramtre icerisine IForm file gerekiyor
+//IFormFile projemize bir dosya yuklemek icin kulanilan yontemdir, HttpRequest ile gonderilen bir dosyayi temsil eder.
+ctrl + nokta ile asp.netcore.http yi secve yukle
 manager e implemente et
 
 ---
-IFýleHelper interface'inde gerekli olan 3 fonksiyonu yazalým
-upload(	dosya ve root ister parametre olarak),delet(dosya konumunu ister),Update ise bu üç deðerden herhangi birini güncellemek isteyebilri
+IFileHelper interface'inde gerekli olan 3 fonksiyonu yazalim
+upload(	dosya ve root ister parametre olarak),delet(dosya konumunu ister),Update ise bu uc degerden herhangi birini guncellemek isteyebilri
 manager e implemente et
 
-içerisindeki kodlarý sonraki adýmlarda  yazacaðýz
+icerisindeki kodlari sonraki adimlarda  yazacagiz
 ---
-DataAccess.Concrete.EntityFramework içerisndeki ReCap Contextimiz ile sqldeki CarImage dosyamýz ile nesnemizi baðlayalým
+DataAccess.Concrete.EntityFramework icerisndeki ReCap Contextimiz ile sqldeki CarImage dosyamiz ile nesnemizi baglayalim
 --
-DataAccess.Concrete.EntityFramework içerisindeki  EFcarimagedal daki çözmediðimiz noktalarý çözüp düzelttik
-DataAccess.Abstract ýcarimagedal ý çözmeyi unutmuþum -çözdüm
+DataAccess.Concrete.EntityFramework icerisindeki  EFcarimagedal daki cozmedigimiz noktalari cozup duzelttik
+DataAccess.Abstract icarimagedal i cozmeyi unutmusum -cozdum
 ----
-GuidHelpers diye bir klasör açalým lazým olacak - þu an nedennasýl bilmiyorum-fakat þunu biliyoruz görsellere  unique benzersiz bir id tanýlamaya yarayacak ki isimleri denk gelmesin
+GuidHelpers diye bir klasor acalim lazim olacak - su an neden nasil bilmiyorum-fakat sunu biliyoruz gorsellere  unique benzersiz bir id tanilamaya yarayacak ki isimleri denk gelmesin
 konumu:core utilities helpers
 
-//-------------------------------------------------4. Adým Sonu----------------------------------------------------------------------------------------------------------//
+//-------------------------------------------------4. Adim Sonu----------------------------------------------------------------------------------------------------------//
+13.Gun -1.odev-5. adim notlari:
+
+carimage managerde--> dal yazalim ve ctorlayalim, buraya file helperi de ekleyelim--bu surecle ilgili aciklamasi olan varsa yoruma yazabilir
+
+is kodlari icin  businessrules.run gerekecek- nasil yapiliyordu--core/utilities/busines klasoru ac ve icerisine businessruless class ac
+Dersteki projedeki kodu aynen al ve yapistir, 
+
+is kodlari yazilacak
+add----
+
+eklemek icin- gorsel sayisi limite ulastimi kontrolu yapmak gerek
+gorsel eklemek islemi IResult turunde donuyor
+dosya  konumu gerekli gorsel ekelyebilmek icin
+
+BURADA FILEHELPER  MANAGER DEVREYE GiRiYOR-
+BURANIN KODLARINDA VE ACIKLAMASINDA KAGANDOGAN:https://gisub.com/KaganDogann/RentalProject/blob/master/Core/Utilities/Helpers/FileHelper/FileHeplerManager.cs
+DAN ALINTI YAPILDI.
+
+guzel acikliyor-notlar duruyor uzerinde
+
+
+bu kodlari kullanmak icin guide helper icerisindeki kodlari da duzenlememiz gerekecek-->guid kodlari yazdik-aciklama icerisinde mevcut
+filehelpermanagerdeki upload in calismasi - carimagemanager'deki add icerisindeki upload a bagli onu da yazacagiz
+--
+pathconstants lazim
+business-constants icerisinde bir classs olacak
+peki islevi nedir?= yuklenen gorselin konumunu belirtien path i olusturur.
+
+bunu yapmadan once
+WebAPI icersine wwwroot adinda bir klasor acmaliyiz
+bunun da icerisine images ve uploads adli iki klasor acmaliyiz
+galiba buraya yuklenen gorsellerri gonderecek guid idleri ile
+
+pathconstansi oolusturduk
+
+
+
+
+-- business
+carimage managerdeyiz-
+add vs islemlerde hem_carImageDal hem de FileHelper 'a islem uygulamayi unutma,
+add methodu nun kodlarini yazalim
+CheckIfCarImageLimit adinda bir methodun en altta yazilmasi lazim-limit kontrol methodu bu-yazdik
+GetByCarId-buna-->bu gerekli (CheckCarImage) ve bu (GetDefaultImage) - yazdik veya kopyaladik
+--
+simdi WebAPI de carimagecontroller kodlarini yazalim
+
+
+--
+autofacbusiness module kodlarini yazalim carimagesmangerin
+ builder.RegisterType<FileHelperManager>().As<IFileHelper>().SingleInstance();
+ bunu da ekle
+
+ SQL TABLOSU ILE RECAP CONTEXT teki isimleri kontrol etmeyi unutma
+
+ calisiyor resim ekleme basarili
+ getaall ile resim getirme basarili
+ //------------------------------5.adim sonu--------------------------------
+--
+
+
+
+

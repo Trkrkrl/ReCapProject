@@ -50,7 +50,7 @@ namespace ConsoleUI
                 ColorId = 3,
                 ModelYear = "2016",
                 DailyPrice = 498000,
-                Descriptions = "Volvo XC40"
+                Description = "Volvo XC40"
             };
 
             CarManager carManager = new CarManager(new EfCarDal());
