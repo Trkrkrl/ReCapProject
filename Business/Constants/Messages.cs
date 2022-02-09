@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,7 +38,16 @@ namespace Business.Constants
 
 
         public static string MaintenanceTime = "Şu an bakım aşamasındayız";
+        public static string AuthorizationDenied = "Yetkilendirme Reddedildi";
 
+        public static string SuccessfulLogin = "Başarılı Giriş";
 
+        public static string UserAlreadyExists = "Bu Kullanıcı Zaten Mevcut";
+
+        public static string UserNotFound = "Kullanıcı Bulunamadı";
+        public static string UserRegistered = "Kullanıcı kaydedildi";
+        public static string AccessTokenCreated = "AccessToken Oluşturuldu";
+
+        public static string PasswordError = "Hatalı şifre";
     }
 }

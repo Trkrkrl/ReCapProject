@@ -89,7 +89,7 @@ autofacbusiness module kodlarini yazalim carimagesmangerin
  getaall ile resim getirme basarili
  //------------------------------5.adim sonu--------------------------------
 --
-14.gun-JWT oDEVI
+14.gun-JWT oDEVI= kodlarindan yardim aldigimdan dolayi @sahranurer 'e tesekkurler
 1. ADIM
 Hocanin derste yaptigi gibi 3 tane veritabaninda tablo olusturalim : users,operationclaims,useroperationclaims
 hata almamaniz adina ilk sqldeki users tablosunu silip  yeniden yapiniz, visualda ki sql bazen sikinti ciakriyor
@@ -97,3 +97,108 @@ bu db tablolarimiza karsilik entityler olusturacaz: core/entities/concrete iceri
 --sql managerde tablolardaki id ler arasi diagram baglanti kursam mi?-yaptim gitti
 ---
 ---------------------------1.adim sonu commit-----------------------------
+
+2.adim
+webapideki appsetting.json u ayarlayalim
+core-utilities-Securtiy adli klasor ac
+icerisine hashing ve encryption klassorleriac
+hashing iceriisne hashinghelperclass-icerisine dersteki kodlari kullandim
+encryption icerisine securitykeyhelper-icerisindeki kodlari ders kodundan aldim- securitykeyi micr.identitiymodeltokens ile COzdUm
+encryprion icerisinde bir class daha SigningCredentialsHelper acalim
+securtiy icerisinde JWT klasoru ac
+BURAYA accesstoken classi ve Itokenhelper interface acalim: kodlarini at icerisine COz,class adini kontrol et
+yine ayni klasor icerisinde  JWTHelper class acalim-kodlari atalim icerisine:iste burada dikkatili olmak gere
+jwt detaine gtmeden tokenoptions class da aclim ve kodalir koyalim
+
+jwthelper notlari:
+-once useri coz
+-iconfigurationu coz: Dikkat Microsoft ile coz
+--get hatasi aliyorsan-
+core'a  sunu yuke:Microsoft.Extensions.Configuration.Binder
+-securitykey helperi coz
+
+JwtSecurityTokenHandler bunun hatasi ise=> System.IdentityModel.Tokens.Jwt yukle
+sagidaki creat ile baslayan method icerisinde signing i coz
+----simdi geri kalanlarin cozulebilmesi claim ve extension islemlerine bagli
+onlari yapalim
+
+core-extensions(yeniklasor) icerisine claim extensions ve claimsprincipalextensions classlari ekle
+kodlari yapistir 
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims; 
+bunlar ile coz
+
+jwt helperde geri kalanlari coz
+----
+Business.BusinessAspects.Autofac icerisine bir class :SecuredOperation  kodlarini at 
+ve methodinterceptionu Core.Utilities.Interceptors; ile coz
+
+servicetool gerekli -->onu da yapalim sonra geri geliriz buraya
+core-utilities-IoC icerisine ServiceTool adinda bi class
+kodlari at icerisine ve coz:mic.dependency injection
+
+--
+secured'e geri geldik-->servicetool'u coz
+business nuget Microsoft.extensions.deppendecyinjecction yUkle
+invocationu castle dynamicproxy ile coz
+IHttpContextAccessor microsoft...asp...htttp li eklentiyi install de
+GetService bunu COzmek:=>using Microsoft.Extensions.DependencyInjection; u yapistir zaten yuklu ama gormuyo
+claimroles i normal coz
+message ye generate de ve f12 ile git digerleri gibi duzenle
+
+--securedops tamam
+
+efuserdal(dataaccses concrete entitity)
+
+data abstarctta I userdali yazacaz:icerisine gerekli tek saatir kodu yaz ve useri coz
+efuserdal contextlerini duzelt bizi recapi yaz
+sonra git recap contextte 3 satir kod aazilacak onlari al ve yapistir
+--
+entities DTOs icerisine 
+login ve registerin dtolari yazilacak
+--
+business abstracta IAuth service yazilacak
+business concrete Authmanager:hocadan aldigin kodlar yetmez bazi yerlerde .Data gerekiyor 
+
+
+
+Usermanagerde ki userlari coz
+
+
+-
+buseiness dependenc autofacbusinessmodule a gerekli kodalari yaz
+-- webapiye gel
+controllers-AuthCntroler
+webaip-nuget'eMicrosoft.AspNetCore.Authentication.JwtBearer'un 5.14 u yukledim yeni surum hata veriyor nedenese
+
+--
+startupa gel
+app.userouting'in altia su kodu ekle
+            app.UseAuthentication();
+
+usercontroller artik yok silelim
+--
+auth managerde userexist koduna business rule ekledim
+CheckIfUserExist
+controllerde en altta message ve datayi kaldrimak gerekti aciklama orda
+
+2. adim sonu: register calisiyor-sadece access toke calistirildi diyor bisey eksik
+login calisiyor -sadecea accesstoken calistirildi diyor biseyeksik
+----------------------2.adim sonu -----------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- 
+
+
