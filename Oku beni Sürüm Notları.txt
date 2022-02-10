@@ -185,6 +185,10 @@ controllerde en altta message ve datayi kaldrimak gerekti aciklama orda
 2. adim sonu: register calisiyor-sadece access toke calistirildi diyor bisey eksik
 login calisiyor -sadecea accesstoken calistirildi diyor biseyeksik
 ----------------------2.adim sonu -----------
+3.adim- startupcs de eksik olan bir ikism vardi  ekledim
+baska bir degisiklik yok
+ login calisiyor: hatali bilgi girildiginde dogru uyarilari veriyor
+ giris yapinca da access token olusturuldu diyor sadece
 
 
 
