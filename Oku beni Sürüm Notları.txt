@@ -215,7 +215,7 @@ baska bir degisiklik yok
  2.adim:Cache Mimarisi kuralim
  core cros cutting -caching icerisine Icachemanger interaface'i acalim-kodlair ders projemizden
  caching icerisine microsoft klasoru acalim: microsoftun caching tekniklerini kullanacagimizdan
- Add new class MemoryCacheManager: Icachemanager türevidir, implementasyonunu yap
+ Add new class MemoryCacheManager: Icachemanager turevidir, implementasyonunu yap
  aspectler normal bagimlilik zincirinde bulunmadigindan core module 'a serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>(); ekle
  buradaki memorycache yerine yeri gelince baska bir teknik istenirse burada yazman yeterli
 
@@ -231,6 +231,32 @@ baska bir degisiklik yok
   remove by su ise yarar: icerisinde ..... icerenleri sil
   _cacheleri memorycache ile degis: direkt repodan aldiysan
   regex leri coz
+
+  --ara commit--
+  core-aspects-autofac-caching(new klasor)-cache aspect (new class)
+  icerisine koldari yapistir
+using Microsoft.Extensions.DependencyInjection; gerekiyor yine
+geri kalan yerleri de coz
+
+--
+simdi remove aspect-cache olarak tutulan dataya iat bir degisikli soz konusu ise remove eder
+ayni caching klasorunde  cacheremoveaspect klasoru acalim
+
+ders kodundan kopyala-ayni sekilde coz -
+using Microsoft.Extensions.DependencyInjection; unutma
+
+mimari olarak caching tamam
+--2. adim 2. ara commit----
+cache aspectlerin kullanilaccaklari yerlere ekleyecegiz-
+
+
+
+
+
+
+
+
+
 
 
 
