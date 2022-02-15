@@ -189,6 +189,35 @@ login calisiyor -sadecea accesstoken calistirildi diyor biseyeksik
 baska bir degisiklik yok
  login calisiyor: hatali bilgi girildiginde dogru uyarilari veriyor
  giris yapinca da access token olusturuldu diyor sadece
+  //---------------------------------------------------------------------------------------------------------------------------
+ 
+ 15.Gun
+ Adim 1:
+ Core -Utilities-Ioc'ye yeni bir interface ac: ICoreModule
+ bu module icerisinde genel bagimliliklarin yuklenmeslinde kullanilacak load  methodu servisleri alir yukler-
+ yani biz servicecolelction verecez yukleme isini o yapacak
+ --
+ dependency resolverimiz projeye ozguydu(businesstaki), baska projelerden gelenleri yonetmek adina birtane de core katmanina
+ Dependency resoleres klasoru ve Coremodule clasi
+ bu class :IcoreModule genetigine sahip, implemente et
+ --
+ startuptaki services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); bu kodun basini degistirip-Core  modulle at
+ httpleri coz yukle
+
+ Startuptaki ServiceTool.Create(services); i siliyoruz-gecici bir cozumdu
+ onun yerine add dependency resolvers'li kodu yazdik//bu sayede ilerde istedigin kadar coremodule gibi  module ekleyebileceksin
+ tabi  bu kodu calistirabilmek adina extension lazim--->core extension add class ServiceCollectionExtensions
+ extension azabilmen adina classi static yap
+ icerisine dersteki kodu yapistir ve coz: acikklama icerisinde
+ -
+ startupa don ve cozebilirsin:dersteki gibi yap o kismi
+ //-------------------1. adim sonu----------------------------
+ 2.adim
+    
+    
+
+
+
 
 
 
