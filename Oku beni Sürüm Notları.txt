@@ -212,7 +212,36 @@ baska bir degisiklik yok
  -
  startupa don ve cozebilirsin:dersteki gibi yap o kismi
  //-------------------1. adim sonu----------------------------
- 2.adim
+ 2.adim:Cache Mimarisi kuralim
+ core cros cutting -caching icerisine Icachemanger interaface'i acalim-kodlair ders projemizden
+ caching icerisine microsoft klasoru acalim: microsoftun caching tekniklerini kullanacagimizdan
+ Add new class MemoryCacheManager: Icachemanager türevidir, implementasyonunu yap
+ aspectler normal bagimlilik zincirinde bulunmadigindan core module 'a serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>(); ekle
+ buradaki memorycache yerine yeri gelince baska bir teknik istenirse burada yazman yeterli
+
+ 
+ memory cache deyiz
+ IMemoryCache _memoryCache; ctor
+ yaz
+  geri kalan kodlari dolduralim remove by pattern haric
+  remove by patter -constructor ister yukarda yaptigindan eminol
+  using Microsoft.Extensions.DependencyInjection; gerekli ampul ile cozulemiyor yoksa
+  -
+  remove by patterni repodan aldik
+  remove by su ise yarar: icerisinde ..... icerenleri sil
+  _cacheleri memorycache ile degis: direkt repodan aldiysan
+  regex leri coz
+
+
+
+
+
+
+
+
+
+
+
     
     
 
