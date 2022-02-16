@@ -37,10 +37,10 @@ namespace Business.Concrete
             return new Result(true, Messages.ColorDeleted);
         }
 
-        
 
-        
 
+
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
             throw new NotImplementedException();

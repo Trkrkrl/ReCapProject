@@ -248,6 +248,45 @@ using Microsoft.Extensions.DependencyInjection; unutma
 mimari olarak caching tamam
 --2. adim 2. ara commit----
 cache aspectlerin kullanilaccaklari yerlere ekleyecegiz-
+sadece cache degil
+performnace ve transacction aspect de var
+performance ->core interceptoresdan yapilacak
+
+simdi sirasiyla yapalim
+cache aspect-car managerde getall ve getby id'ye eklenecek-ekle ve coz
+cacheremoveaspect-car managerde add update ve delete not cache remove icerisine "ICarService.Get") ister
+--
+validationAspect->icerisine typee of ... validator
+                car managerde add ve update
+                brand managerde add ve update
+                --buradan sonra herkes farkli yapmis- tum managerlerde add ve update ekleyen de var, burada birakan da
+                color managerde add ve update
+                ---
+Performance aspect :
+Core/Aspects/Autofac/Performance/PerformanceAspect.cs olusturalim
+kodlari  yapistir ve coz
+using Microsoft.Extensions.DependencyInjection; unutma
+
+sonra
+core utilities interceptors-aspectsinterceptorselectora gir
+classAttributes.Add(new PerformanceAspect(3)); ekle
+performans tamam
+--
+transaction nereye yapilacak bilmiyom aam classini yapalim hazir olsun
+core/aspect/autofac icerisine - transaction klasoru ve icerisine de TransactionScopeAspect clasi
+hocanin repodan al kodu ve yapistir ve coz
+---tmm------------------
+secured operations business aspect te vardi
+genelde herkes sadece carmanager'e (add delete ve update e) yazmis
+baska managerlerdeki operasyonlara da yazilabilir-ilerde gerekirse
+
+useropartionclaim tablonu yaptigindan emin ol sqldeki
+düzeltme: icache amnagerde iki tane isadd Isadd vardi sildim birini
+
+
+
+
+
 
 
 

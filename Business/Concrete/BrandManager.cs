@@ -43,7 +43,8 @@ namespace Business.Concrete
             return new Result(true, Messages.BrandDeleted);
         }
 
-       
+
+        [ValidationAspect(typeof(BrandValidator))]
 
         public IResult Update(Brand brand)
         {

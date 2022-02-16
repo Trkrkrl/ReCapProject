@@ -15,7 +15,7 @@ namespace Core.CrossCuttingConcern.Caching
         bool isAdd(string key);//cache de varmı kontrolü
         void Remove(string key);
         void RemoveByPattern(string pattern);// burrada patternden kastı- fonksiyon adında get varmı veya category varmı,
-        bool IsAdd(string key);
+       
         //method adinda boyle şeyler olanları remove et-uçur yani
 
     }
