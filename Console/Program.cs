@@ -36,8 +36,8 @@ namespace ConsoleUI
                 Email = "asd@asd.com",
                 FirstName = "TESTKULLANICIADI",
                 LastName = "TESTSOYAD",
-                Password = "1234",
-                CustomerId=1//bu değer mevcut müşterilerden birinin idsi
+                //Password = "1234",
+               // CustomerId=1//bu değer mevcut müşterilerden birinin idsi
                 
 
             });
