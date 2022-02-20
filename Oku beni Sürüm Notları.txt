@@ -282,6 +282,9 @@ baska managerlerdeki operasyonlara da yazilabilir-ilerde gerekirse
 
 useropartionclaim tablonu yaptigindan emin ol sqldeki
 düzeltme: icache amnagerde iki tane isadd Isadd vardi sildim birini
+//-----------
+duzeltme 2: CoreModule icerisinde serviceCollection.AddMemoryCache(); bunu unutmustum ve cacheaspect yazilan methodlarin calismasini
+enggeliyordu
 
 
 

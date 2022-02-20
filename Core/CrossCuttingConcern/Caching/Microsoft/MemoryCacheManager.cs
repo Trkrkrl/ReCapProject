@@ -34,7 +34,7 @@ namespace Core.CrossCuttingConcern.Caching.Microsoft
             return _memoryCache.Get(key);
         }
 
-        public bool isAdd(string key)
+        public bool IsAdd(string key)
         {
             return _memoryCache.TryGetValue(key, out _);//bize sadece anahtar varmı yoku önemli  sadece key gireccez
             //ama kızdığından out _ yazıyoruz, çıktısı önemlideğil,zahmet etme cachedeki değeri verme diyoz bu cs deki bir yöntemdir

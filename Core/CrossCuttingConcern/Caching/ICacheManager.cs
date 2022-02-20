@@ -12,7 +12,7 @@ namespace Core.CrossCuttingConcern.Caching
         object Get(string key);
 
         void Add(string key, object value, int duration);
-        bool isAdd(string key);//cache de varmı kontrolü
+        bool IsAdd(string key);//cache de varmı kontrolü
         void Remove(string key);
         void RemoveByPattern(string pattern);// burrada patternden kastı- fonksiyon adında get varmı veya category varmı,
        

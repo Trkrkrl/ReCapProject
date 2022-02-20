@@ -62,7 +62,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Car>> GetAll()// bakım var emsajı gelecek şekilde yapalım bunu
         {
-                if (DateTime.Now.Hour == 23)
+                if (DateTime.Now.Hour == 02 )
                     return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
 
                 return new DataResult<List<Car>>(_carDal.GetAll(), true, Messages.CarsListed);
