@@ -70,18 +70,18 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAllByBrandId(int id)
         {
-                return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
+                return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.brandId == id));
             }
 
         public IDataResult<List<Car>> GetAllByColorId(int id)
         {
-                return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));//bu C.ID doğru mu karı
+                return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.colorId == id));//bu C.ID doğru mu karı
             }
 
         [CacheAspect]
         public IDataResult<Car> GetById(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarID == carId));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.carId == carId));//sağdaki serverden gelen sanirim
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()

@@ -285,6 +285,10 @@ düzeltme: icache amnagerde iki tane isadd Isadd vardi sildim birini
 //-----------
 duzeltme 2: CoreModule icerisinde serviceCollection.AddMemoryCache(); bunu unutmustum ve cacheaspect yazilan methodlarin calismasini
 enggeliyordu
+//--
+Duzeltme 3: nesne adlari sikinti cikariyordu veritabani da dahil tum car carid gibi isimler camelCase e cevirildi
+controllerde .data olan kisim degisti--> frontendde response .data ile zaten dataya erisiyor
+
 
 
 

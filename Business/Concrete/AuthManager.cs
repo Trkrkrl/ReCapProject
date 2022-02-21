@@ -32,10 +32,10 @@ namespace Business.Concrete
             var user = new User
             {
                 Email = userForRegisterDto.Email,
-                FirstName = userForRegisterDto.FirstName,
-                LastName = userForRegisterDto.LastName,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
+                firstName = userForRegisterDto.FirstName,
+                lastName = userForRegisterDto.LastName,
+                passwordHash = passwordHash,
+                passwordSalt = passwordSalt,
                 Status = true
             };
             _userService.Add(user);
@@ -50,7 +50,7 @@ namespace Business.Concrete
                 return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
-            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.PasswordHash, userToCheck.Data.PasswordSalt))
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.passwordHash, userToCheck.Data.passwordSalt))
             {
                 return new ErrorDataResult<User>(Messages.PasswordError);
             }

@@ -29,12 +29,12 @@ namespace Business.Concrete
 
         public IResult Add(IFormFile file, CarImage carImage)
         {
-            IResult result = BusinessRules.Run(CheckIfCarImageLimit(carImage.CarId));//limit kontrolu-asagida yazildi
+            IResult result = BusinessRules.Run(CheckIfCarImageLimit(carImage.carId));//limit kontrolu-asagida yazildi
             if (result != null)
             {
                 return result;
             }
-            carImage.ImagePath = _fileHelper.Upload(file, PathConstants.ImagesPath);
+            carImage.imagePath = _fileHelper.Upload(file, PathConstants.ImagesPath);
             carImage.Date = DateTime.Now;
             _carImageDal.Add(carImage);
             return new SuccessResult("Resim başarıyla yüklendi");
@@ -42,13 +42,13 @@ namespace Business.Concrete
 
         public IResult Delete(CarImage carImage)
         {
-            _fileHelper.Delete(PathConstants.ImagesPath + carImage.ImagePath);
+            _fileHelper.Delete(PathConstants.ImagesPath + carImage.imagePath);
             _carImageDal.Delete(carImage);
             return new SuccessResult();
         }
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            carImage.ImagePath = _fileHelper.Update(file, PathConstants.ImagesPath + carImage.ImagePath, PathConstants.ImagesPath);
+            carImage.imagePath = _fileHelper.Update(file, PathConstants.ImagesPath + carImage.imagePath, PathConstants.ImagesPath);
             _carImageDal.Update(carImage);
             return new SuccessResult();
         }
@@ -65,7 +65,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<CarImage>>(GetDefaultImage(carId).Data);
             }
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId));
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.carId == carId));
 
         }
 
@@ -79,7 +79,7 @@ namespace Business.Concrete
 
         private IResult CheckIfCarImageLimit(int carId)//limit kontrol kurali
         {
-            var result = _carImageDal.GetAll(c => c.CarId == carId).Count;
+            var result = _carImageDal.GetAll(c => c.carId == carId).Count;
             if (result >= 5)
             {
                 return new ErrorResult();
@@ -88,7 +88,7 @@ namespace Business.Concrete
         }
         private IResult CheckCarImage(int carId)
         {
-            var result = _carImageDal.GetAll(c => c.CarId == carId).Count;
+            var result = _carImageDal.GetAll(c => c.carId == carId).Count;
             if (result > 0)
             {
                 return new SuccessResult();
@@ -99,7 +99,7 @@ namespace Business.Concrete
         {
 
             List<CarImage> carImage = new List<CarImage>();
-            carImage.Add(new CarImage { CarId = carId, Date = DateTime.Now, ImagePath = "DefaultImage.jpg" });
+            carImage.Add(new CarImage { carId = carId, Date = DateTime.Now, imagePath = "DefaultImage.jpg" });
             return new SuccessDataResult<List<CarImage>>(carImage);
         }
 

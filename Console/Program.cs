@@ -26,7 +26,7 @@ namespace ConsoleUI
 
             customerManager.Add(new Customer
             {
-                CompanyName = "North Star Inc."
+                companyName = "North Star Inc."
             });
 
 
@@ -34,8 +34,8 @@ namespace ConsoleUI
             userManager.Add(new User
             {
                 Email = "asd@asd.com",
-                FirstName = "TESTKULLANICIADI",
-                LastName = "TESTSOYAD",
+                firstName = "TESTKULLANICIADI",
+                lastName = "TESTSOYAD",
                 //Password = "1234",
                // CustomerId=1//bu değer mevcut müşterilerden birinin idsi
                 
@@ -47,10 +47,10 @@ namespace ConsoleUI
         {
             Car MyCar = new Car
             {
-                BrandId = 4,
-                ColorId = 3,
-                ModelYear = "2016",
-                DailyPrice = 498000,
+                brandId = 4,
+                colorId = 3,
+                modelYear = "2016",
+                dailyPrice = 498000,
                 Description = "Volvo XC40"
             };
 
@@ -84,7 +84,7 @@ namespace ConsoleUI
             foreach (var color in colorManager.GetAll().Data)
             {
 
-                Console.WriteLine(color.ColorName);
+                Console.WriteLine(color.colorName);
             }
         }
 
@@ -95,7 +95,7 @@ namespace ConsoleUI
             foreach (var brand in brandManager.GetAll().Data)
             {
 
-                Console.WriteLine(brand.BrandName);
+                Console.WriteLine(brand.brandName);
             }
         }
         

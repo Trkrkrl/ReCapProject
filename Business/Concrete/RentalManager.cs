@@ -27,7 +27,7 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            if (rental.ReturnDate.Year == 2022)
+            if (rental.returnDate.Year == 2022)
             {
                 _rentalDal.Add(rental);
                 return new SuccessDataResult<Rental>(Messages.RentalAdded);
@@ -51,7 +51,7 @@ namespace Business.Concrete
 
         public IDataResult<Rental> GetById(int rentalId)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id==rentalId));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.rentalId==rentalId));
         }
 
         public IResult Update(Rental rental)

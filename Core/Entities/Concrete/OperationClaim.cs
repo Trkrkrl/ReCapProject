@@ -8,7 +8,7 @@ namespace Core.Entities.Concrete
 {
     public class OperationClaim : IEntity
     {
-        public int Id { get; set; }
+        public int operationClaimId { get; set; }
         public string Name { get; set; }
     }
 }

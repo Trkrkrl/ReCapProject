@@ -9,8 +9,8 @@ namespace Entities.Concrete
 {
     public class Brand:IEntity
     {
-        public int BrandID { get; set; }
-        public string BrandName { get; set; }
+        public int brandId { get; set; }
+        public string brandName { get; set; }
 
     }
 }

@@ -12,7 +12,7 @@ namespace Business.ValidationRules.FluentValidation
     {
         public CarValidator()
         {
-            RuleFor(c => c.DailyPrice).GreaterThan(0);
+            RuleFor(c => c.dailyPrice).GreaterThan(0);
             RuleFor(c => c.Description.Length).GreaterThan(4);
             //RuleFor(c => c.BrandId).GreaterThan(0);
 

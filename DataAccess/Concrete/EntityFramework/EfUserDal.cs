@@ -18,9 +18,9 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from operationClaim in context.OperationClaims//küçük harfle başlayan  büyüğü temsil ediyor
                              join userOperationClaim in context.UserOperationClaims
-                                 on operationClaim.Id equals userOperationClaim.OperationClaimId
-                             where userOperationClaim.UserId == user.Id
-                             select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
+                                 on operationClaim.operationClaimId equals userOperationClaim.operationClaimId
+                             where userOperationClaim.userId == user.Id
+                             select new OperationClaim { operationClaimId = operationClaim.operationClaimId, Name = operationClaim.Name };
                 return result.ToList();
 
             }
