@@ -79,14 +79,14 @@ namespace Business.Concrete
             }
 
         [CacheAspect]
-        public IDataResult<Car> GetById(int carId)
+        public IDataResult<Car> GetByCarId(int carId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.carId == carId));//sağdaki serverden gelen sanirim
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-                if (DateTime.Now.Hour == 10)
+                if (DateTime.Now.Hour == 02)
                 {
                     return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
                 }
@@ -96,6 +96,30 @@ namespace Business.Concrete
                 }
         }
 
-        
+        public IDataResult<Car> GetById(int carId)
+        {
+            throw new NotImplementedException();
+        }
+
+        //--asagisi frontend dto 177.odevde eklendi
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandId(int brandId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByColorId(int colorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByCarId(int carId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByColorAndByBrand(int colorId, int brandId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

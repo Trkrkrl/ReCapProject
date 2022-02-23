@@ -288,8 +288,45 @@ enggeliyordu
 //--
 Duzeltme 3: nesne adlari sikinti cikariyordu veritabani da dahil tum car carid gibi isimler camelCase e cevirildi
 controllerde .data olan kisim degisti--> frontendde response .data ile zaten dataya erisiyor
+nesne dalarini sqlde degisitirken visualstuioda yapma
+git
+ayreten ms sql server management studio yu ac orada yap. visual hatali calisiyor
+--
+duzeltme:4:
+17.gun odevi dto gerektiriyor-zaten mevcut olan cardetail dto ya yeni propertyler ekledim
+efcardal da joinleri buna ore uyarladim
+
+-Fronted de service de yazilan get by--- id yee gore olan kodlarin webapi karsiliklari yazilacak
+    carcontrollerdeyiz: 
+                        getcardetailsbycarid;dikkat et buzaten olan degil
+                        -get car details ekleyelim(bu kod icarservice,carmanager,efcardal da zaten bahsi geciyor-dtolu mu)
+                        GetCarDetailsByBrandId
+                        GetCarDetailsByColorId
+                        GetCarDetailsByCarId
+                        GetCarDetailsByColorAndByBrand
+                        bu dort kodu : icarservice, car manager,efcardal ve icardal
+                                       de  uzantilarini yaz
+                                       kolaylik: (service yaz-carmanagere implemente et
+                                       sonra icardala yaz efcardal a implenmente et otomatik)
+                                       efcardal da her method icerisine ayni joini yazmak yerine joini method yapip hepsinde cagirdim
+                                       -efcardalda h
+
+17.gun 4. adim--rental islemleri;
+rentaldto olustur
+rental service yaz methodunu
+IRentaldal a yaz
+efrental dal a implemente et
+
+dtoya eslenik olacak verileri efrentaldal'da tablolari joinledikten sonra belirle
+  managere implemente et -kodun icerisinii de doldur
 
 
+webapi'de getrentaldetails-
+
+
+--!!!!!!!!!! EF rentaddaldaki JOINLEME islemler cok onemli, en basta rentalda yaptigini unutma, customer ve user tablolarini hem cuid hem userid de joinle
+
+//---------------------------------17. GUN ODEV-BACKEND- SONU---------------
 
 
 

@@ -16,5 +16,13 @@ namespace DataAccess.Abstract
        
         
         List<CarDetailDto> GetCarDetails();//car manager den generate method ile aldık
+
+        //--frontend için eklenen 
+        List<CarDetailDto> GetCarDetailsByBrandId(int brandId);
+        List<CarDetailDto> GetCarDetailsByColorId(int colorId);
+        List<CarDetailDto> GetCarDetailsByCarId(int carId);
+        List<CarDetailDto> GetCarDetailsByColorAndByBrand(int colorId, int brandId);
+
+
     }
 }

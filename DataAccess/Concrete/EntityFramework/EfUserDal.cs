@@ -19,7 +19,7 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from operationClaim in context.OperationClaims//küçük harfle başlayan  büyüğü temsil ediyor
                              join userOperationClaim in context.UserOperationClaims
                                  on operationClaim.operationClaimId equals userOperationClaim.operationClaimId
-                             where userOperationClaim.userId == user.Id
+                             where userOperationClaim.userId == user.userId
                              select new OperationClaim { operationClaimId = operationClaim.operationClaimId, Name = operationClaim.Name };
                 return result.ToList();
 

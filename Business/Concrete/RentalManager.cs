@@ -5,6 +5,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,11 @@ namespace Business.Concrete
              return new SuccessDataResult<Rental>(Messages.RentalDeleted);
            // return new Result(true, Messages.RentalDeleted);
         }
+        public IResult Update(Rental rental)
+        {
+            _rentalDal.Update(rental);
+            return new Result(true);
+        }
 
         public IDataResult<List<Rental>> GetAll()//buradadata result list t verilmiş aşağısı da öyle oalcak
         {
@@ -53,11 +59,13 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.rentalId==rentalId));
         }
-
-        public IResult Update(Rental rental)
+        //---
+        public IDataResult<List<RentalDetailDto>> GetRentalsDetails()
         {
-            _rentalDal.Update(rental);
-            return new Result(true);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails());
         }
+        //-----
+
+        
     }
 }

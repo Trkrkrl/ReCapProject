@@ -9,10 +9,17 @@ namespace Entities.DTOS
 {
     public class CarDetailDto:IDto
     {// CarName, BrandName, ColorName, DailyPrice
-        public string CarName { get; set; }
-        public string BrandName { get; set; }
-        public string ColorName { get; set; }
-        public decimal DailyPrice { get; set; }
+        
+        public int carId { get; set; }
+        public int colorId { get; set; }
+        public int brandId { get; set; }
+        public string modelYear { get; set; }
+        public string modelName { get; set; }
+        public string brandName { get; set; }
+        public string colorName { get; set; }
+        public decimal dailyPrice { get; set; }
+        public string Description { get; set; }
+        public string imagePath { get; set; }
 
         //car servicce de list olarakfonk ekle
     }
