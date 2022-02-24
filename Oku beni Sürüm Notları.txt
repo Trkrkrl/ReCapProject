@@ -308,8 +308,8 @@ efcardal da joinleri buna ore uyarladim
                                        de  uzantilarini yaz
                                        kolaylik: (service yaz-carmanagere implemente et
                                        sonra icardala yaz efcardal a implenmente et otomatik)
-                                       efcardal da her method icerisine ayni joini yazmak yerine joini method yapip hepsinde cagirdim
-                                       -efcardalda h
+                                      XXXXX efcardal da her method icerisine ayni joini yazmak yerine joini method yapip hepsinde cagirdim
+                                       -efcardalda hXXXX BURASI HATALI EFCARDAL 18.GUN DUZELTILDI
 
 17.gun 4. adim--rental islemleri;
 rentaldto olustur
@@ -328,48 +328,26 @@ webapi'de getrentaldetails-
 
 //---------------------------------17. GUN ODEV-BACKEND- SONU---------------
 
+18. GUN
+
+brand ve color tiklamalarina gore ==> frontende CAR datasi gonderecegiz
+
+carcontrollersdeyiz
+    COLOR VE BRAND e gore get methodlarimiz onceki odevlerde yazildi
+     fakat car manager icerisindeki koldarin icerisi doldurulmadi
+     getbycarid haric new SuccessDataResult<List<>>(); kalibi ile dolduracan basit anladin mantigi zaten
 
 
+     BÜYYÜÜK HATA:EFCARDAL düzeltilecek
+     önce  icardal sonra efcardal düzeltieklcek
+     getdetailse tek basina yeterli, sadece 2 parametre almasini ve filtreleme yapabilmesini saglamaliyiz
+     --bunu expressin <Func<cardetaildto,bool>>filter ile yaptik nasil yaptik bilmiyorum= tam anlamadim ama  mantigi anladim
+        bizim gönderecegimiz veri frontendde ilerde degisebilir, tipe göre çalis diyo
+        tamam bu düzzeltmeleri yaptiik
+        altina return filter == null ? result.ToList() : result.Where(filter).ToList();
+        demeyi unutma ki return u ona gore olsun
+---18. odev 1.adim-
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- 
 
 

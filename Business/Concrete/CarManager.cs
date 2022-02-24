@@ -98,28 +98,28 @@ namespace Business.Concrete
 
         public IDataResult<Car> GetById(int carId)
         {
-            throw new NotImplementedException();
+           return new SuccessDataResult<Car>(_carDal.Get(c => c.carId == carId));
         }
 
         //--asagisi frontend dto 177.odevde eklendi
         public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandId(int brandId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c=>c.brandId==brandId));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetailsByColorId(int colorId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.colorId == colorId));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetailsByCarId(int carId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.carId == carId));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetailsByColorAndByBrand(int colorId, int brandId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(a=>a.colorId==colorId && a.brandId == brandId));
         }
     }
 }

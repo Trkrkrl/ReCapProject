@@ -4,6 +4,7 @@ using Entities.DTOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,14 +16,10 @@ namespace DataAccess.Abstract
             
        
         
-        List<CarDetailDto> GetCarDetails();//car manager den generate method ile aldık
+        List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null);//car manager den generate method ile aldık
 
-        //--frontend için eklenen 
-        List<CarDetailDto> GetCarDetailsByBrandId(int brandId);
-        List<CarDetailDto> GetCarDetailsByColorId(int colorId);
-        List<CarDetailDto> GetCarDetailsByCarId(int carId);
-        List<CarDetailDto> GetCarDetailsByColorAndByBrand(int colorId, int brandId);
-
+        //--frontend için eklenen kısım silind bunun yerine yukaridaki fonksiiyon icerisine expression  ve filter getirildi
+       
 
     }
 }

@@ -5,6 +5,7 @@ using Entities.DTOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,47 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, ReCapContext>, ICarDal //buraya bir context gelmeli:ReCapcontext imizi yaptık DataAccess.Concrete.EntityFramework'te 
     {
-        public List<Car> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Car> GetById()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<CarDetailDto> GetCarDetails()
-        {//alttaki ksımı kopyaladım
-         //SQL VERİTABANINA DİKKAT ET GEREKLİ TABLOLAR YAPILDI MI
-
-            return JoinTablolama();
-        }
-
-
-        public List<CarDetailDto> GetCarDetailsByBrandId(int brandId)
-        {
-            return JoinTablolama();
-        }
-
-        public List<CarDetailDto> GetCarDetailsByCarId(int carId)
-        {
-            return JoinTablolama();
-        }
-
-        public List<CarDetailDto> GetCarDetailsByColorAndByBrand(int colorId, int brandId)
-        {
-            return JoinTablolama();
-        }
-
-        public List<CarDetailDto> GetCarDetailsByColorId(int colorId)
-        {
-            return JoinTablolama();
-        }
-
-
-
-        private static List<CarDetailDto> JoinTablolama()
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
         {
             using (ReCapContext context = new ReCapContext())
             {
@@ -64,6 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  // CarName, BrandName, ColorName, DailyPrice
                                  carId = a.carId,
+                                 colorId = r.colorId,
                                  brandName = b.brandName,
                                  colorName = r.colorName,
                                  modelYear = a.modelYear,
@@ -79,10 +41,9 @@ namespace DataAccess.Concrete.EntityFramework
 
 
 
-                return result.ToList();
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
 
             }
         }
-
     }
 }
