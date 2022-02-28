@@ -19,7 +19,7 @@ namespace Entities.DTOS
         public string colorName { get; set; }
         public decimal dailyPrice { get; set; }
         public string Description { get; set; }
-        public string imagePath { get; set; }
+        public List<string> ImagePath { get; set; }
 
         //car servicce de list olarakfonk ekle
     }

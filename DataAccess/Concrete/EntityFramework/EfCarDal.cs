@@ -34,7 +34,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  modelName = a.modelName,
                                  Description = a.Description,
                                  //image path
-                                 imagePath = (from m in context.CarImages where m.carId == a.carId select m.imagePath).FirstOrDefault()
+                                 ImagePath = (from m in context.CarImages where m.carId == a.carId select m.imagePath).ToList(),
 
                              };
 

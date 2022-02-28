@@ -120,6 +120,23 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDetailsByColorAndByBrand(int colorId, int brandId)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(a=>a.colorId==colorId && a.brandId == brandId));
+        }//-----------
+
+
+
+
+
+
+
+      //  Business rules
+            private IResult CheckIfCarIdExist(int carId)
+        {
+            var result = _carDal.GetAll(c => c.carId == carId);
+            if (result != null)
+            {
+                return new ErrorResult();
+            }
+            return new SuccessResult();
         }
     }
 }

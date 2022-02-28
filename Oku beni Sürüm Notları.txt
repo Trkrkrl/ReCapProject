@@ -87,6 +87,11 @@ autofacbusiness module kodlarini yazalim carimagesmangerin
 
  calisiyor resim ekleme basarili
  getaall ile resim getirme basarili
+
+
+---17.GUNDE carmanager business rules gerekecek: carid sayisi sonsuza kadar gitmemeli
+
+
  //------------------------------5.adim sonu--------------------------------
 --
 14.gun-JWT oDEVI= kodlarindan yardim aldigimdan dolayi @sahranurer 'e tesekkurler
@@ -342,12 +347,26 @@ carcontrollersdeyiz
      önce  icardal sonra efcardal düzeltieklcek
      getdetailse tek basina yeterli, sadece 2 parametre almasini ve filtreleme yapabilmesini saglamaliyiz
      --bunu expressin <Func<cardetaildto,bool>>filter ile yaptik nasil yaptik bilmiyorum= tam anlamadim ama  mantigi anladim
-        bizim gönderecegimiz veri frontendde ilerde degisebilir, tipe göre çalis diyo
+        bizim gönderecegimiz veri frontendde ilerde degisebilir, tipe göre calis diyo
         tamam bu düzzeltmeleri yaptiik
         altina return filter == null ? result.ToList() : result.Where(filter).ToList();
         demeyi unutma ki return u ona gore olsun
 ---18. odev 1.adim-
+postman resim yukleme notu: Image fiyon file seciyon ve resmi seciyon
+digreide carid zaten
+---
+Frontendde bazen fonksiyonlar surekli carid gonderip veri isteyebilir
+buna karsi bir busines mi yapilmali yoksa frontedde bisey yapilabilirmi
+backend 404 dönüyor demek yok diyebilriyor
+o zaman frontendin sonsuz veri bombardimanini orada engellemek gerekli
+
+--
+onlarca repo ve proje inceledim ve kurallara ve dersteki isleyise en yakin sekilde birini bulamadim
+kubraterzi  hocamizin kodlarindan esinlenerek duzeltmeler yapacagim
+ 
+ efcaardal ve cardetaildtoda image path i list of string seklinde tutaacgim, ki mantikli bir arac birden cok resime sahip
 
 
+ -------------------18-gun odev sonu-------------
 
 

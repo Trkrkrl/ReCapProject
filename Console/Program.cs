@@ -37,12 +37,14 @@ namespace ConsoleUI
                 firstName = "TESTKULLANICIADI",
                 lastName = "TESTSOYAD",
                 //Password = "1234",
-               // CustomerId=1//bu değer mevcut müşterilerden birinin idsi
-                
+                // CustomerId=1//bu değer mevcut müşterilerden birinin idsi
+
 
             });
         }
-
+    }
+}
+        /*
         private static void CarTest2()
         {
             Car MyCar = new Car
@@ -66,7 +68,7 @@ namespace ConsoleUI
                                "Car's Brand Name: " + item.BrandName + " \n" +
                                "Car's Color: " + item.ColorName + " \n" +
                                "Car's Daily Price: " + item.DailyPrice + " \n" +
-                             
+
                                "******************************************"
                         );
                 }
@@ -98,12 +100,11 @@ namespace ConsoleUI
                 Console.WriteLine(brand.brandName);
             }
         }
-        
+
 
 
     }
 
-        
-    
-}
-        
+
+
+}*/

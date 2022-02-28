@@ -9,6 +9,7 @@ namespace Entities.Concrete
 {
    public class CarImage:IEntity
     {
+        
         public int Id { get; set; }
         public int carId { get; set; }
         public string imagePath { get; set; }
