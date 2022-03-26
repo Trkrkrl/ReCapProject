@@ -71,7 +71,14 @@ namespace Core.DataAccess.EntityFramework
 
             }
         }
+        //--cardmanager için
+        public bool Any(Expression<Func<TEntity, bool>> exp)
+        {
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().Any(exp);
+            }
+        }
 
-        
     }
 }

@@ -49,7 +49,12 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Customer>(_customerDal.Get(C=> C.customerId == customerId));
         }
-
+        //-getbyuserid sonradan eklendi
+        public IDataResult<Customer> GetByUserId(int userId)
+        {
+            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.userId == userId));
+        }
+        //-
         public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);//I resultta result oluyor-update de mesaj veya eri gelimyo sadece bool

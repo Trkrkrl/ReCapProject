@@ -17,8 +17,9 @@ namespace Core.Utilities.Interceptors
             {
                 var classAttributes = type.GetCustomAttributes<MethodInterceptionBaseAttribute>(true).ToList();
                 var methodAttributes = type.GetMethod(method.Name).GetCustomAttributes<MethodInterceptionBaseAttribute>(true);
+            
             classAttributes.AddRange(methodAttributes);
-            classAttributes.Add(new PerformanceAspect(5));
+            classAttributes.Add(new PerformanceAspect(10));
 
 
 

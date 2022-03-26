@@ -35,13 +35,12 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = a.Description,
                                  //image path
                                  ImagePath = (from m in context.CarImages where m.carId == a.carId select m.imagePath).ToList(),
-
-                             };
-
-
-
+                                 IsRentable = !context.Rentals.Any(r => r.carId == a.carId) || !context.Rentals.Any(r => r.carId == a.carId && (r.returnDate == null || (r.returnDate.HasValue && r.returnDate > DateTime.Now)))
+                             };//is rentable açıklaması:  rental içerisinde söylenen carid de bir car HİÇ YOK MU veya(rental içerisinde istenen car idye sahip ve( dönüş tarihi olmayan veya (dönüş tarihi olup ta şu anki tarihten ileri olan)))
+                // yapana helal olsun  aracın dönüş tarihi yoksa, kiralanmışlar listesinde yoksa ture döner yani kiralanabilir
 
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
+
 
             }
         }

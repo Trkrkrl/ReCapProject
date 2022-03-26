@@ -38,5 +38,9 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<User> Users { get; set; }
+        //---payment
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Card> Cards { get; set; }
+
     }
 }

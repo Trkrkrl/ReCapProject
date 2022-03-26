@@ -286,7 +286,7 @@ genelde herkes sadece carmanager'e (add delete ve update e) yazmis
 baska managerlerdeki operasyonlara da yazilabilir-ilerde gerekirse
 
 useropartionclaim tablonu yaptigindan emin ol sqldeki
-düzeltme: icache amnagerde iki tane isadd Isadd vardi sildim birini
+duzeltme: icache amnagerde iki tane isadd Isadd vardi sildim birini
 //-----------
 duzeltme 2: CoreModule icerisinde serviceCollection.AddMemoryCache(); bunu unutmustum ve cacheaspect yazilan methodlarin calismasini
 enggeliyordu
@@ -343,12 +343,12 @@ carcontrollersdeyiz
      getbycarid haric new SuccessDataResult<List<>>(); kalibi ile dolduracan basit anladin mantigi zaten
 
 
-     BÜYYÜÜK HATA:EFCARDAL düzeltilecek
-     önce  icardal sonra efcardal düzeltieklcek
+     BuYYuuK HATA:EFCARDAL duzeltilecek
+     önce  icardal sonra efcardal duzeltieklcek
      getdetailse tek basina yeterli, sadece 2 parametre almasini ve filtreleme yapabilmesini saglamaliyiz
      --bunu expressin <Func<cardetaildto,bool>>filter ile yaptik nasil yaptik bilmiyorum= tam anlamadim ama  mantigi anladim
         bizim gönderecegimiz veri frontendde ilerde degisebilir, tipe göre calis diyo
-        tamam bu düzzeltmeleri yaptiik
+        tamam bu duzzeltmeleri yaptiik
         altina return filter == null ? result.ToList() : result.Where(filter).ToList();
         demeyi unutma ki return u ona gore olsun
 ---18. odev 1.adim-
@@ -357,7 +357,7 @@ digreide carid zaten
 ---
 Frontendde bazen fonksiyonlar surekli carid gonderip veri isteyebilir
 buna karsi bir busines mi yapilmali yoksa frontedde bisey yapilabilirmi
-backend 404 dönüyor demek yok diyebilriyor
+backend 404 dönuyor demek yok diyebilriyor
 o zaman frontendin sonsuz veri bombardimanini orada engellemek gerekli
 
 --
@@ -368,5 +368,79 @@ kubraterzi  hocamizin kodlarindan esinlenerek duzeltmeler yapacagim
 
 
  -------------------18-gun odev sonu-------------
+ 19.gun car rental: kirada olup olamadigini ogren: isRental  efcardal ve cardetaildtoda geciyor
+ cardetaildetoy prop olarak ekle
+ efcardal a gel ve oradaki kodu yaz
+
+ rentalmangerdeki add methodunu simdilik askiya aldim add zamani gelince duzelitlecek
+
+ -----------
+ 19. gun odev devam-
+ Odeme islemleri: 
+ banka ve kredikarti sistemi yapmamiz gerekiyor?
+  
+  INTENTIOAN PROGRAMMIN yapalim
+  once Webapi
+
+  1.paymentcontroller
+  2-cardcontrroller olusturalim
+
+  1.1-   IPaymentService _paymentService; ve ctorlamasi - 
+  1.2- bu paymentservice istiyor olusturali payment serviceyi-business -abstract-IPaymentService-webapiye using ver
+  
+  1.3- http post ve get olan methodlari yazalim- GET(getall-getbyid-)
+  1.4- bunlara IPayment service de Iresult ve Idataresult lu methodlariini yaz gerekli yerleri cagir--> PAyment nesnesi eksik
+  1.5-payment nesnes  olustur: entities concretede -IEntity vermeyi unutma
+  1.6 simdi payment manager- business concretede olustur: public yap- implemente et IPaymentServiceden
+  1.7- carmanagerin dataya erisebilmesi amaciyla IPaymentDal kullanmasi lazim: dataaccess-abstract-IPAymentdal interface olsutur-public
+  1.8-burada sen bir IentitiyRepositroy<T> sin diyoruz-t yeerine payment-gerekli yerleri coz- bu erPaymetdal istiyor
+
+  1.9-dataaccess-concrete icerisinde efpaymentdal-EfEntityRepositoryBase<Payment, ReCapContext>, IPaymentDal yap
+  1.10-bu da recap contextte payment yok diyor: Recapte payment ekleyecez
+  1.11-buna sql de tablo lazim-sagdaki sql table adi
+                                                siz sql i goremyeceginizden tabloyuaciklayayim
+                                                paymentId int identical 1,1
+                                                customer id int
+                                                cardnuumber nvarchar50
+                                                TotalAmount Float
+  
+  1.12-Payment managere geri dönduk: parametreleri yaz , methodlarin icerisini yaz-en basta paymenddal i ctorlamayi unutma!!!
+  
+  simdi paymente yaptiklarimizi - card a da yapacagiz
+  2.1-cards controller -ICardSErvice _carSErvice
+  2.2-http post ve getleri yaz
+  2.3-business absrtacta Icardeservice,
+  2.4-webapi de methodlara ctrl nokta ile genereate de ki ICardserviceye atsin isimler ve orada düzenle veya--- orada tek tek de yazabilrisin
+  2.5-IResul Idatatesultlarini yaz
+  2.6-Card nesnesini entities concrete ekle-Ientity unutma-proplarini ekle(
+  2.7-cardmanager olsutur ve git-icarserviceye bagla
+  2.8-Icarddal _carddal yaz
+  2.9-data access abstractta Icarddal olustur-sen bir IEntityRepositorysin
+  2.10- dataccess concrete efcarddal-EfEntityRepositoryBase ekle
+  2.11-recap contexte dbs etini ekle
+  2.12-manageri serviceden implemente et
+  2.13__carddal in ctorunu olsutur
+  2.14-SQL tablosu olsutur-tablolari ayrica sql management stuido MS SMS  ten acmani tavsiye ederim (tiny int felan yapma sakin)
+
+  sql tablo baglantilarini yapam mi diagramlari-yaptim card ve payment si customer id uzerinden custoemr e bagladim
+  //------
+
+
+  customers controller a getby user id adinda bir fonksiyon gerekti,bunu ust katmanda customer service ve managerde de gerekenleri yapalim
+
+  card managerin kodlarini yazmamisiz, duzeltelim orayi
+  card serviceye bir de card listesi getiren method yazdik-bunu IcardService vecardmanagere de islledik
+  add kontrolu isin core data access te Ientitiyrepository ve EFentitiyrepositorybase de any methodlari olusturduk
+  methodlarin mesajlari olusturuldu
+
+  bitmedi: business,dependencyresolver-autofac -autofac businessmodule ye  ordaki gibi kodlarin card verisyonlarini ekle
+
+  -
+  rentaldaki add methodunun içerisini yoruma cekmistik-methodu duzelltim
+  business rule koydum bi tane
+
+
+
+
 
 

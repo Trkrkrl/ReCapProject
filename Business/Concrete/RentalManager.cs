@@ -2,6 +2,7 @@
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -28,13 +29,15 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            if (rental.returnDate.Year == 2022)
+            var result = BusinessRules.Run(IsCarAvailable(rental.carId)); //, CheckIfFindeks(rental.CarID, rental.CustomerID));
+
+            if(result != null)
             {
-                _rentalDal.Add(rental);
-                return new SuccessDataResult<Rental>(Messages.RentalAdded);
+                return new ErrorResult();
             }
-            else
-                return new ErrorDataResult<Rental>(Messages.RentalFailed);
+
+            _rentalDal.Add(rental);
+            return new SuccessResult(Messages.RentalAdded);
         }
 
         public IResult Delete(Rental rental)
@@ -65,7 +68,17 @@ namespace Business.Concrete
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails());
         }
         //-----
+        private IResult IsCarAvailable(int carId)
+        {
+            var result = _rentalDal.GetAll(c => c.carId == carId && (c.rentDate == null || c.returnDate > DateTime.Now)).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.NotAvailable);
+            }
 
-        
+            return new SuccessResult();
+        }
+
+
     }
 }

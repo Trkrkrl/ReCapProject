@@ -19,8 +19,8 @@ namespace Entities.DTOS
         public string modelName { get; set; }
         public string customerName { get; set; }
         public string customerLastname { get; set; }
-        public DateTime rentDate { get; set; }
-        public DateTime? returnDate { get; set; }//soru isareti enden null olabileceginden mi acaba
+        public DateTime RentDate { get; set; }
+        public DateTime? ReturnDate { get; set; }//soru isareti enden null olabileceginden mi acaba
         
         
 

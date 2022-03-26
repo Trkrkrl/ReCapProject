@@ -37,8 +37,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  brandName = b.brandName,
                                  modelName = ca.modelName,
                                  rentalId = re.rentalId,
-                                 rentDate = re.rentDate,
-                                 returnDate = re.returnDate,
+                                 RentDate = re.rentDate,
+                                 ReturnDate = re.returnDate,
                                  customerName = u.firstName,
                                  customerLastname = u.lastName,
                                  customerId=cus.customerId

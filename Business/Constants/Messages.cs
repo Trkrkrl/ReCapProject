@@ -49,5 +49,14 @@ namespace Business.Constants
         public static string AccessTokenCreated = "AccessToken Oluşturuldu";
 
         public static string PasswordError = "Hatalı şifre";
+
+        public static string CardAdded = " Kart Eklendi";
+        public static string CardDeleted = "Kart Silindi";
+        public static string CardListed = " Kartlar Listelendi";
+        public static string CardUpdated = "Kart Bilgileri Güncellendi";
+
+        public static string NotAvailable = "Araç Bu tarihlerde kiralanamaz";
+
+        
     }
 }

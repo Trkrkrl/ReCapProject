@@ -22,5 +22,6 @@ namespace Entities.DTOS
         public List<string> ImagePath { get; set; }
 
         //car servicce de list olarakfonk ekle
+        public bool IsRentable { get; set; }
     }
 }
