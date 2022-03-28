@@ -439,6 +439,14 @@ kubraterzi  hocamizin kodlarindan esinlenerek duzeltmeler yapacagim
   rentaldaki add methodunun içerisini yoruma cekmistik-methodu duzelltim
   business rule koydum bi tane
 
+  ----
+  20.gun odevi
+   Middleware katmani  ekleme islemler
+   Core da 2 tane middleware li 1 tane de errorlu bir class ekledik
+   bunlari islemesi isisn birta startupa da 1 satir kod app.usemiddleware li bisey
+   app.ConfigureCustomExceptionMiddleware();
+
+
 
 
 
