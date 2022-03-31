@@ -121,15 +121,19 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(a=>a.colorId==colorId && a.brandId == brandId));
         }//-----------
+        //findeks son odev
+        public IDataResult<int> CarFindex(int carId)
+        {
+            var result = _carDal.Get(x => x.carId == carId);
+            return new SuccessDataResult<int>(result.Findeks);
+        }
 
 
 
 
 
-
-
-      //  Business rules
-            private IResult CheckIfCarIdExist(int carId)
+        //  Business rules
+        private IResult CheckIfCarIdExist(int carId)
         {
             var result = _carDal.GetAll(c => c.carId == carId);
             if (result != null)

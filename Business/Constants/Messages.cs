@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Constants
 {
-   public static class Messages
+    public static class Messages
     {//aşağıdaki mesaj türleri : 
         public static string CarAdded = "Araba Adı EKlendi";
         public static string CarNameInvalid = "Girdiğiniz Araba Adı Geçersiz";
@@ -17,8 +17,8 @@ namespace Business.Constants
 
         public static string BrandAdded = "Marka Eklendi";
         public static string BrandDeleted = "Marka Silindi";
-        
-        
+
+
         public static string ColorAdded = "Renk eklendi";
         public static string ColorsListed = "Renkler Listelendi";
         public static string ColorDeleted = "Renk silindi";
@@ -57,6 +57,14 @@ namespace Business.Constants
 
         public static string NotAvailable = "Araç Bu tarihlerde kiralanamaz";
 
-        
+        public static string CannotRent = "Findeks punı yetersiz. Kiralayamazsınız";
+        public static string CanRent = "Findeks yeterli,Kiralayabilirsiniz";
+
+        public static string UserCantDeleted = "Kullanıcı silinemez";
+        public static string UserUpdated = "Kullanıcı bilgilieri güncellendi";
+        public static string GetByUserId = "Kulllanıcı adına göre çekildi";
+        internal static string passwordChanged = "Şifre değiştirildi";
+
+        public static string UserByCustomerId = "kullanıcı customer id ile çekildi";
     }
 }

@@ -14,6 +14,7 @@ namespace Entities.Concrete
         public int customerId { get; set; }
         public int userId { get; set; }//database table a da ekledik
         public string companyName { get; set; }
+        public int findeks { get; set; }
 
 
 

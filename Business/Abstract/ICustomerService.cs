@@ -18,7 +18,7 @@ namespace Business.Abstract
         IResult Delete(Customer customer);
         //-
         IDataResult<Customer> GetByUserId(int userId);
-
+        IDataResult<int> Findeks(int customerId);
 
     }
 }

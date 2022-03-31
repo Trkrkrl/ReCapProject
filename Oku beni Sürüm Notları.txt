@@ -447,6 +447,59 @@ kubraterzi  hocamizin kodlarindan esinlenerek duzeltmeler yapacagim
    app.ConfigureCustomExceptionMiddleware();
 
 
+   -
+   son gun odevindeyiz
+
+   findeks elemanlari gerekli
+   once customer detail dto 
+   sonra efcustomerdal
+   customer nesnemize findeks prop  ekledik
+   sql de customer e findeks ekledik
+   once serviceye sonra customer managere findeks methodu koyalim
+
+   customer in findek lerini yaptik
+   simdi arabalarin findeks ozelliklerini yapalim
+   sonra da rental sureci isin  f,ndkes satlari vs yazacaz
+        
+        car service
+        car manager
+        cardetaildto
+        efcardal
+        sql car table
+        car nesnesi
+
+
+        carvalidator: hazir yapmis ikne validator lari da halldelim
+
+
+        rental sureclerini yazalim
+        webapi-rentals - checkfindeks method
+                        rentalservice findekscheckmethod
+                        sonra rental manager, en üsütndeki Idalllari unutma
+
+        findeks kismi fornt ve backendde calisiyor
+        --
+
+
+        userrs controller api gerekli
+
+       buna service lazim-ki vardi zaten
+       serviceye yeni methodlar ekledim
+       bir tane method passwordchange dto istiyo -fronteddeki passwordupdate model gibi
+       serviceye gel metodu tamamala ve dto yu coz
+       apilei cagirma adlari ayni olsun frontendle
+       calisiyor artik
+
+
+       THE END
+       
+
+    
+
+
+
+
+
 
 
 

@@ -55,6 +55,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("checkfindeks")]
+
+        public IActionResult CheckFindeks(int carId, int customerId)
+        {
+            var result = _rentalService.FindeksCheck(carId, customerId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
         //-----------------------
         [HttpPost("Add")]
         public IActionResult Add(Rental rental)
@@ -90,5 +101,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+
     }
 }

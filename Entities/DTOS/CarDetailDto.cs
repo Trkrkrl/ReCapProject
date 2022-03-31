@@ -23,5 +23,7 @@ namespace Entities.DTOS
 
         //car servicce de list olarakfonk ekle
         public bool IsRentable { get; set; }
+        //-21. son odev findeks
+        public int findeks { get; set; }
     }
 }

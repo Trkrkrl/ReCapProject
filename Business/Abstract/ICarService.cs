@@ -33,6 +33,10 @@ namespace Business.Abstract
 
 
 
+        IDataResult<int> CarFindex(int carId);
+
+
+
 
 
 

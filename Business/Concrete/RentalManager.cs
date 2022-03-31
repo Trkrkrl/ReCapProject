@@ -18,10 +18,13 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-
-        public RentalManager(IRentalDal rentalDal)
+        private ICustomerService _customerService;
+        private ICarService _carService;
+        public RentalManager(IRentalDal rentalDal, ICustomerService customerService, ICarService carService)
         {
             _rentalDal = rentalDal;
+            _customerService = customerService;
+            _carService = carService;
         }
 
         //-----------------------------------
@@ -79,6 +82,16 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-
+        //-findeks
+        public IResult FindeksCheck(int carId, int customerId)
+        {
+            var customerFindex = _customerService.Findeks(customerId);
+            var carFindex = _carService.CarFindex(carId);
+            if (carFindex.Data > customerFindex.Data)
+            {
+                return new ErrorResult(Messages.CannotRent);
+            }
+            return new SuccessResult(Messages.CanRent);
+        }
     }
 }

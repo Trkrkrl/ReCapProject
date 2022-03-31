@@ -20,6 +20,7 @@ namespace Business.Abstract
 
         //---rental webapi islemleri-17.gun-dto
         IDataResult<List<RentalDetailDto>> GetRentalsDetails();
+        IResult FindeksCheck(int carId, int customerId);
 
 
     }

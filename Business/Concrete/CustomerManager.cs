@@ -60,5 +60,10 @@ namespace Business.Concrete
             _customerDal.Update(customer);//I resultta result oluyor-update de mesaj veya eri gelimyo sadece bool
             return new Result(true);
         }
+        public IDataResult<int> Findeks(int customerId)
+        {
+            var result = _customerDal.Get(x => x.customerId == customerId);
+            return new SuccessDataResult<int>(result.findeks);
+        }
     }
 }

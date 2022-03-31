@@ -33,6 +33,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  brandId = b.brandId,
                                  modelName = a.modelName,
                                  Description = a.Description,
+                                 findeks = a.Findeks,
                                  //image path
                                  ImagePath = (from m in context.CarImages where m.carId == a.carId select m.imagePath).ToList(),
                                  IsRentable = !context.Rentals.Any(r => r.carId == a.carId) || !context.Rentals.Any(r => r.carId == a.carId && (r.returnDate == null || (r.returnDate.HasValue && r.returnDate > DateTime.Now)))
